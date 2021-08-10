@@ -53,7 +53,6 @@ namespace Lab4.Data
                 context.CommunityMemberships.Add(m);
             }
             context.SaveChanges();
-
         }
     }
 }

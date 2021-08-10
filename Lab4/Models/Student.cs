@@ -6,7 +6,7 @@ namespace Lab4.Models
 {
     public class Student
     {
-        public int Id { get; set; }
+        public int id { get; set; }
 
         [Required]
         [StringLength(50)]

@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Lab4.Models.ViewModels.FileInputViewModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Upload";
+}
+
+<h1>Upload</h1>
+
+<h2>Upload an add for community @Model.CommunityTitle</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UploadFile" asp-route-id="@Model.CommunityId" enctype="multipart/form-data">
+            <div class="form-group">
+                <div class="btn btn-sm float-left">
+                    <input name="file" type="file" accept="image/x-png,image/gif,image/jpeg" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button name="upload" class="btn btn-primary">Upload Now</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-route-id="@Model.CommunityId">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

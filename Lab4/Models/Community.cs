@@ -21,5 +21,6 @@ namespace Lab4.Models
 
         //A collection of  navigation propertys
         public ICollection<CommunityMembership> Membership { get; set; }
+        public ICollection<Advertisement> Advertisements { get; set; }
     }
 }

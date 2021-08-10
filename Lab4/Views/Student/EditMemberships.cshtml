@@ -1,0 +1,67 @@
+﻿@model Lab4.Models.ViewModels.StudentMembershipViewModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "EditMemberships";
+}
+
+<h1>Edit</h1>
+
+<h4>Student</h4>
+<hr />
+<dl class="row">
+    <dt class="col-sm-2">
+        Full Name
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Student.LastName), @Html.DisplayFor(model => model.Student.FirstName)
+    </dd>
+</dl>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Community
+            </th>
+            <th>
+                Action
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Memberships)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            @if (item.IsMember == false)
+            {
+                <td>
+                    <a asp-action="AddMembership" asp-route-commId="@item.CommunityId" asp-route-studentId="@Model.Student.id">To Register</a>
+                </td>
+                <td>
+                    Not Registered
+                </td>
+
+            }
+            else
+            {
+                <td>
+                    <a asp-action="RemoveMembership" asp-route-commId="@item.CommunityId" asp-route-studentId="@Model.Student.id">To Deregister</a>
+                </td>
+                <td>
+                    Registered
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

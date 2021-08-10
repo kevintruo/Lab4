@@ -38,7 +38,6 @@ namespace Lab4.Controllers
                     x => x.Id == Id).Single().Membership;
             }
             return View(viewModel);
-
         }
 
         // GET: Community/Details/5
