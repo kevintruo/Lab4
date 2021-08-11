@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab4.Migrations
 {
     [DbContext(typeof(SchoolCommunityContext))]
-    [Migration("20210806185455_Init")]
-    partial class Init
+    [Migration("20210810012802_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,31 @@ namespace Lab4.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Lab4.Models.Advertisement", b =>
+                {
+                    b.Property<int>("AdvertisementId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CommunityId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AdvertisementId");
+
+                    b.HasIndex("CommunityId");
+
+                    b.ToTable("Advertisement");
+                });
 
             modelBuilder.Entity("Lab4.Models.Community", b =>
                 {
@@ -79,6 +104,13 @@ namespace Lab4.Migrations
                     b.ToTable("Student");
                 });
 
+            modelBuilder.Entity("Lab4.Models.Advertisement", b =>
+                {
+                    b.HasOne("Lab4.Models.Community", null)
+                        .WithMany("Advertisements")
+                        .HasForeignKey("CommunityId");
+                });
+
             modelBuilder.Entity("Lab4.Models.CommunityMembership", b =>
                 {
                     b.HasOne("Lab4.Models.Community", "Community")
@@ -100,6 +132,8 @@ namespace Lab4.Migrations
 
             modelBuilder.Entity("Lab4.Models.Community", b =>
                 {
+                    b.Navigation("Advertisements");
+
                     b.Navigation("Membership");
                 });
 

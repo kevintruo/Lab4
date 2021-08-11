@@ -4,42 +4,43 @@
     Layout = "_Layout";
     ViewData["Title"] = "Edit";
 }
-
-<h1>Edit</h1>
-
-<h4>Student</h4>
+<h1 class="title">Edit</h1>
+<br />
+<h1 class="subtitle">Student</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="id" />
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EnrollmentDate" class="control-label"></label>
-                <input asp-for="EnrollmentDate" class="form-control" />
-                <span asp-validation-for="EnrollmentDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="has-text-danger"></div>
+    <input type="hidden" asp-for="id" />
+    <div class="field">
+        <label asp-for="LastName" class="label"></label>
+        <div class="control">
+            <input asp-for="LastName" class="input" type="text" placeholder="Last Name" />
+        </div>
+        <span asp-validation-for="LastName" class="has-text-danger"></span>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+    <div class="field">
+        <label asp-for="FirstName" class="label"></label>
+        <div class="control">
+            <input asp-for="FirstName" class="input" type="text" placeholder="First Name" />
+        </div>
+        <span asp-validation-for="FirstName" class="has-text-danger"></span>
+    </div>
+    <div class="field">
+        <label asp-for="EnrollmentDate" class="label"></label>
+        <div class="control">
+            <input asp-for="EnrollmentDate" class="input" type="date" />
+        </div>
+        <span asp-validation-for="EnrollmentDate" class="has-text-danger"></span>
+    </div>
+    <div class="field is-grouped">
+        <div class="control">
+            <input type="submit" value="Save" class="button is-link" />
+        </div>
+        <div class="control">
+            <a asp-action="Index" class="button is-link is-light">Back to List</a>
+        </div>
+    </div>
+</form>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

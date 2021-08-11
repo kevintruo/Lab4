@@ -20,6 +20,6 @@ namespace Lab4.Models
         public string Url{ get; set; }
 
         [Required]
-        public Community community;
+        public Community community { get; set; }
     }
 }

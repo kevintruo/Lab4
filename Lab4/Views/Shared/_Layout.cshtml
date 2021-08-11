@@ -1,44 +1,41 @@
 ﻿<!DOCTYPE html>
 
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
+<head >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewData["Title"] - Students and Communities</title>
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bulma.min.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">StudentsAndCommunities</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Student" asp-action="Index">Student</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Community" asp-action="Index">Community</a>
-                        </li>
-                    </ul>
+    <section class="section">
+        <div class="container-is-max-desktop">
+            <span class="title">
+                Assignment 2 - By Dante Beltran & Kevin Truong
+            </span>
+            <hr />
+            <nav class="navbar is-link">
+                <div id="navbarExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" asp-controller="Home" asp-action="Index">SchoolCommunity</a>
+                        <a class="navbar-item" asp-controller="Home" asp-action="Index">Home</a>
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link" href="#">Options</a>
+                            <div class="navbar-dropdown is-boxed">
+                                <a class="navbar-item" asp-controller="Student" asp-action="Index">Students</a>
+                                <a class="navbar-item" asp-controller="Community" asp-action="Index">Communities</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-
-    @RenderSection("Scripts", required: false)
-</body>
+            </nav>
+        </div>
+        <br />
+        <div class="container-is-max-desktop">
+            <main role="main">
+                @RenderBody()
+            </main>
+        </div>
+        @RenderSection("Scripts", required: false)
+    </section>
+</body >
 </html>

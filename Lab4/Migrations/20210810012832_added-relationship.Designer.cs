@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab4.Migrations
 {
     [DbContext(typeof(SchoolCommunityContext))]
-    [Migration("20210810011122_added-Advertisement-relationship")]
-    partial class addedAdvertisementrelationship
+    [Migration("20210810012832_added-relationship")]
+    partial class addedrelationship
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

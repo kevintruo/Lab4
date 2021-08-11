@@ -7,28 +7,20 @@
     ViewData["Title"] = "Upload";
 }
 
-<h1>Upload</h1>
-
-<h2>Upload an add for community @Model.CommunityTitle</h2>
+<h1 class="title">Upload</h1>
+<br />
+<h1 class="subtitle">Upload an add for community @Model.CommunityTitle</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="UploadFile" asp-route-id="@Model.CommunityId" enctype="multipart/form-data">
-            <div class="form-group">
-                <div class="btn btn-sm float-left">
-                    <input name="file" type="file" accept="image/x-png,image/gif,image/jpeg" required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <button name="upload" class="btn btn-primary">Upload Now</button>
-            </div>
-        </form>
+<form asp-action="UploadFile" asp-route-id="@Model.CommunityId" enctype="multipart/form-data">
+    <input name="file" type="file" accept="image/x-png,image/gif,image/jpeg" required>
+    <br /><br />
+    <div class="field is-grouped">
+        <button name="upload" class="button is-link">Upload Now</button> &nbsp;
+        <a class="button is-link is-light" asp-action="Index" asp-route-id="@Model.CommunityId">Back to List</a>
     </div>
-</div>
+</form>
 
 <div>
-    <a asp-action="Index" asp-route-id="@Model.CommunityId">Back to List</a>
 </div>
 
 @section Scripts {

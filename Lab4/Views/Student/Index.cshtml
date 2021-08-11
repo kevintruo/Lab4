@@ -1,16 +1,15 @@
-﻿ @model Lab4.Models.ViewModels.CommunityViewModel
+﻿@model Lab4.Models.ViewModels.CommunityViewModel
 
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<h1 class="title">Index</h1>
+<br />
+<a class="button is-link" asp-action="Create">Create New</a>
+<hr />
+<table class="table is-striped is-narrow is-hoverable is-fullwidth">
     <thead>
         <tr>
             <th>
@@ -39,11 +38,11 @@
                     @Html.DisplayFor(modelItem => item.EnrollmentDate)
                 </td>
                 <td>
-                    <a asp-action="Index" asp-route-id="@item.id">Select</a> |
-                    <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-                    <a asp-action="EditMemberships" asp-route-id="@item.id">Edit Memberships</a> |
-                    <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                    <a class="button is-link" asp-action="Index" asp-route-id="@item.id">Select</a> &nbsp;
+                    <a class="button is-link" asp-action="Edit" asp-route-id="@item.id">Edit</a> &nbsp;
+                    <a class="button is-link" asp-action="EditMemberships" asp-route-id="@item.id">Edit Memberships</a> &nbsp;
+                    <a class="button is-link" asp-action="Details" asp-route-id="@item.id">Details</a> &nbsp;
+                    <a class="button is-link" asp-action="Delete" asp-route-id="@item.id">Delete</a> &nbsp;
                 </td>
             </tr>
         }
@@ -53,7 +52,7 @@
 @if (Model.CommunityMemberships != null)
 {
     <h3>
-       Member of the following communities
+        Member of the following communities
     </h3>
     <table class="table">
         <tr>

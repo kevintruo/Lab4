@@ -5,33 +5,27 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
+<h1 class="title">Details</h1>
+<br />
+<h1 class="subtitle">Student</h1>
+<hr />
+<table class="table is-narrow is-hoverable">
+    <tbody>
+        <tr>
+            <td class="has-text-weight-bold">@Html.DisplayNameFor(Model => Model.LastName)</td>
+            <td>@Html.DisplayFor(Model => Model.LastName)</td>
+        </tr>
+        <tr>
+            <td class="has-text-weight-bold">@Html.DisplayNameFor(Model => Model.FirstName)</td>
+            <td>@Html.DisplayFor(Model => Model.FirstName)</td>
+        </tr>
+        <tr>
+            <td class="has-text-weight-bold">@Html.DisplayNameFor(Model => Model.EnrollmentDate)</td>
+            <td>@Html.DisplayFor(Model => Model.EnrollmentDate)</td>
+        </tr>
+    </tbody>
+</table>
 <div>
-    <h4>Student</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EnrollmentDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EnrollmentDate)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="button is-link" asp-action="Edit" asp-route-id="@Model.id">Edit</a> &nbsp;
+    <a class="button is-link is-light"asp-action="Index">Back to List</a>
 </div>

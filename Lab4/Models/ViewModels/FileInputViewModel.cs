@@ -10,7 +10,7 @@ namespace Lab4.Models.ViewModels
     {
         public string CommunityId { get; set; }
         public string CommunityTitle { get; set; }
-        public IFormFile File { get; set; }
+        public Advertisement Advertisement { get; set; }
     }
 
 }

@@ -4,18 +4,16 @@
     ViewData["Title"] = "EditMemberships";
 }
 
-<h1>Edit</h1>
-
-<h4>Student</h4>
+<h1 class="title">Edit memberships</h1>
+<br />
+<h1 class="subtitle">Student</h1>
 <hr />
-<dl class="row">
-    <dt class="col-sm-2">
-        Full Name
-    </dt>
-    <dd class="col-sm-10">
+<div class="field is-grouped">
+    <label class="label">Full Name:&emsp;&emsp;&emsp;&emsp;</label>
+    <label class="label">
         @Html.DisplayFor(model => model.Student.LastName), @Html.DisplayFor(model => model.Student.FirstName)
-    </dd>
-</dl>
+    </label>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -34,34 +32,34 @@
     <tbody>
         @foreach (var item in Model.Memberships)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            @if (item.IsMember == false)
-            {
+            <tr>
                 <td>
-                    <a asp-action="AddMembership" asp-route-commId="@item.CommunityId" asp-route-studentId="@Model.Student.id">To Register</a>
+                    @Html.DisplayFor(modelItem => item.Title)
                 </td>
-                <td>
-                    Not Registered
-                </td>
+                @if (item.IsMember == false)
+                {
+                    <td>
+                        <a class="button is-link" asp-action="AddMembership" asp-route-commId="@item.CommunityId" asp-route-studentId="@Model.Student.id">To Register</a>
+                    </td>
+                    <td>
+                        Not Registered
+                    </td>
 
-            }
-            else
-            {
-                <td>
-                    <a asp-action="RemoveMembership" asp-route-commId="@item.CommunityId" asp-route-studentId="@Model.Student.id">To Deregister</a>
-                </td>
-                <td>
-                    Registered
-                </td>
-            }
-        </tr>
+                }
+                else
+                {
+                    <td>
+                        <a class="button is-link" asp-action="RemoveMembership" asp-route-commId="@item.CommunityId" asp-route-studentId="@Model.Student.id">To Deregister</a>
+                    </td>
+                    <td>
+                        Registered
+                    </td>
+                }
+            </tr>
         }
     </tbody>
 </table>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="control">
+    <a asp-action="Index" class="button is-link is-light">Back to List</a>
 </div>

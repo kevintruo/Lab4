@@ -113,9 +113,8 @@ namespace Lab4.Controllers
             var viewModel = new FileInputViewModel();
             viewModel.CommunityId = community.Id;
             viewModel.CommunityTitle = community.Title;
-            var ad = _context.Advertisements.Where(m => m.AdvertisementId == id).Single();
-            //viewModel.File = Path.Combine(ad.FileName, ad.Url);
-            if (ad == null)
+            viewModel.Advertisement = _context.Advertisements.Where(m => m.AdvertisementId == id).Single();
+            if (viewModel.Advertisement == null)
             {
                 return NotFound();
             }
@@ -123,14 +122,14 @@ namespace Lab4.Controllers
             return View(viewModel);
         }
 
-       /* [HttpPost, ActionName("Delete")]
+       [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string communityId, int id)
         {
 
 
 
-            var image = await _context.Ad.FindAsync(id);
+            var image = await _context.Advertisements.FindAsync(id);
 
 
             BlobContainerClient containerClient;
@@ -153,7 +152,7 @@ namespace Lab4.Controllers
                     await blockBlob.DeleteAsync();
                 }
 
-                _context.Ad.Remove(image);
+                _context.Advertisements.Remove(image);
                 await _context.SaveChangesAsync();
 
             }
@@ -164,6 +163,5 @@ namespace Lab4.Controllers
 
             return RedirectToAction("Index", new { id = communityId });
         }
-    }*/
-}
+    }
 }

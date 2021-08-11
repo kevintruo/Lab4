@@ -6,13 +6,11 @@
     Layout = "_Layout";
     ViewData["Title"] = "Index";
 }
-<h1>Show ads for community @Model.Community.Title</h1>
-<p>
-    <a asp-action="Upload" asp-route-id="@Model.Community.Id">Upload New</a>
-</p>
-<p>
-    <a asp-controller="Community" asp-action="Index">Back to list</a>
-</p>
+<h1 class="title">Show ads for community @Model.Community.Title</h1>
+<div class="field is-grouped">
+    <a class="button is-link" asp-action="Upload" asp-route-id="@Model.Community.Id">Upload New</a> &nbsp;
+    <a class="button is-link is-light" asp-controller="Community" asp-action="Index">Back to list</a>
+</div>
 @if (Model.Advertisements.Count() == 0)
 {
     <p>There are no files to display.</p>
@@ -22,19 +20,19 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>
+                <th class="has-text-weight-bold">
                     Advertisement ID
                 </th>
-                <th>
+                <th class="has-text-weight-bold">
                     Community ID
                 </th>
-                <th>
+                <th class="has-text-weight-bold"> 
                     File Name
                 </th>
-                <th>
+                <th class="has-text-weight-bold">
                     URL
                 </th>
-                <th></th>
+                <th class="has-text-weight-bold"></th>
             </tr>
         </thead>
         <tbody>
@@ -54,7 +52,7 @@ else
                     <img src="@item.Url" style="max-width: 400px;" />
                 </td>
                 <td>
-                    <a asp-action="Delete" asp-route-id="@item.AdvertisementId" asp-route-communityId="@item.community.Id">Delete</a>
+                    <a class="button is-link" asp-action="Delete" asp-route-id="@item.AdvertisementId" asp-route-communityId="@item.community.Id">Delete</a>
                 </td>
             </tr>
             }
