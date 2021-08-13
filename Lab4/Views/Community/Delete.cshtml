@@ -1,4 +1,4 @@
-﻿@model Lab4.Models.Community
+﻿@model Lab4.Models.ViewModels.AdsViewModel
 
 @{
     Layout = "_Layout";
@@ -7,23 +7,32 @@
 
 <h1 class="title">Delete</h1>
 <br />
-<h1 class="subtitle">Student</h1>
+<h1 class="subtitle">Community</h1>
 <hr />
 <table class="table is-narrow is-hoverable">
     <tbody>
         <tr>
-            <td class="has-text-weight-bold">@Html.DisplayNameFor(model => model.Title)</td>
-            <td>@Html.DisplayFor(model => model.Title)</td>
+            <td class="has-text-weight-bold">@Html.DisplayNameFor(model => model.Community.Title)</td>
+            <td>@Html.DisplayFor(model => model.Community.Title)</td>
         </tr>
         <tr>
-            <td class="has-text-weight-bold">@Html.DisplayNameFor(model => model.Budget)</td>
-            <td>@Html.DisplayFor(model => model.Budget)</td>
+            <td class="has-text-weight-bold">@Html.DisplayNameFor(model => model.Community.Budget)</td>
+            <td>@Html.DisplayFor(model => model.Community.Budget)</td>
         </tr>
     </tbody>
 </table>
-<h1  class="subtitle">Are you sure you want to delete this?</h1>
-<form asp-action="Delete">
-    <input type="hidden" asp-for="Id" />
-    <input class="button is-link" type="submit" value="Delete" /> &nbsp;
+@if (Model.Advertisements.Count() == 0)
+{
+    <h1 class="subtitle">Are you sure you want to delete this?</h1>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="@Model.Community.Id" />
+        <input class="button is-link" type="submit" value="Delete" /> &nbsp;
+        <a class="button is-link is-light" asp-action="Index">Back to List</a>
+    </form>
+}
+else
+{
+    <p>You cannot delete a community until all associated advertisements are deleted.</p>
+    <br />
     <a class="button is-link is-light" asp-action="Index">Back to List</a>
-</form>
+}

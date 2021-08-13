@@ -138,15 +138,10 @@ namespace Lab4.Controllers
             {
                 return NotFound();
             }
-
-            var community = await _context.Communities
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (community == null)
-            {
-                return NotFound();
-            }
-
-            return View(community);
+            var viewModel = new AdsViewModel();
+            viewModel.Community = _context.Communities.Where(x => x.Id == id).Single();
+            viewModel.Advertisements = await _context.Advertisements.Where(x => x.community.Id == id).ToListAsync();
+            return View(viewModel);
         }
 
         // POST: Community/Delete/5
